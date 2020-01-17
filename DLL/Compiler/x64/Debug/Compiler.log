@@ -1,0 +1,7 @@
+﻿  stdafx.cpp
+  AssemblyInfo.cpp
+  Compiler.cpp
+  Generando código...
+  .NETFramework,Version=v4.6.1.AssemblyAttributes.cpp
+  AssemblyInfo.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
+  Compiler.vcxproj -> D:\UNIVERSIDAD\6TO\COMPILADORES\UI\UICOMPILER\x64\Debug\Compiler.dll
