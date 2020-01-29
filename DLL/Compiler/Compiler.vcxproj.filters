@@ -13,8 +13,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de encabezado\NewFilter1">
+    <Filter Include="Archivos de encabezado\LEXSTATES">
       <UniqueIdentifier>{9ad49d95-ff98-478c-bf8a-3a0164479636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\LEXSTATES">
+      <UniqueIdentifier>{363f42dc-706e-4d20-92a3-59e07f73f38d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\SYNSTATES">
+      <UniqueIdentifier>{5377f27b-44e5-4353-b0fd-46a5af5bf5c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\SYNSTATES">
+      <UniqueIdentifier>{a6759c7e-ca6f-4cf5-afec-c8d7782d434e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -39,11 +48,29 @@
     <ClInclude Include="include\Token.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\StateMachine.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="include\Analyzer.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LexStates.h">
+      <Filter>Archivos de encabezado\LEXSTATES</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyntaxAnalizer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GlobalNode.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LocalNode.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LexStateMachine.h">
+      <Filter>Archivos de encabezado\LEXSTATES</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SynStateMachine.h">
+      <Filter>Archivos de encabezado\SYNSTATES</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SynStates.h">
+      <Filter>Archivos de encabezado\SYNSTATES</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +93,54 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="source\Token.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateRead.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="include\LexStateMachine.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStaDelimitator.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateOpAritmetico.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateCommentaryMultiLine.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateNumber.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateFloat.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateOpLogic.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateOpRelacional.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateString.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateID.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateIncremento.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LexStateDecremento.cpp">
+      <Filter>Archivos de origen\LEXSTATES</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyntaxAnalizer.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GlobalNode.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LocalNode.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

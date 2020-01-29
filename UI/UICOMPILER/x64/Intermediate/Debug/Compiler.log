@@ -1,9 +1,3 @@
-﻿  ErrorModule.cpp
-d:\universidad\6to\compiladores\dll\compiler\source\errormodule.cpp(22): warning C4551: la llamada a la función no tiene lista de argumentos
-  LexAnalyzer.cpp
-  Manager.cpp
-d:\universidad\6to\compiladores\dll\compiler\source\manager.cpp(21): warning C4390: ';': se encontró una instrucción controlada vacía; ¿es esa la intención?
-  Token.cpp
-  Generando código...
+﻿  LexStateOpAritmetico.cpp
   AssemblyInfo.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
-  Compiler.vcxproj -> D:\UNIVERSIDAD\6TO\COMPILADORES\UI\UICOMPILER\x64\Exe\Debug\Compilerx64d.dll
+  Compiler.vcxproj -> D:\UNIVERSIDAD\6TO\COMPILADORES\GIT\COMPILADORES\UI\UICOMPILER\x64\Exe\Debug\Compilerx64d.dll

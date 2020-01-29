@@ -18,7 +18,9 @@ namespace Compiler {
 		ASIGNATION,
 		DELIMITER,
 		STRING,
-		COMENTARY
+		COMENTARY,
+		INCREMENT,
+		DECREMENT
 		//AGREGAR TODOS LOS TIPOS
 	};
 	class Token

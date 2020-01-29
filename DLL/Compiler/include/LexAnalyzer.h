@@ -4,7 +4,7 @@
 #include "vcclr.h"
 #include "ErrorModule.h"
 #include "Analyzer.h"
-#include "StateMachine.h"
+#include "LexStateMachine.h"
 #include "Token.h"
 
 using namespace System;
@@ -29,11 +29,15 @@ namespace Compiler {
 		void clean();
 		bool m_errorsExcedet = false;
 		int m_tokensIndex = -1;
-	private:
+		int indexNum = -1;
+		int m_numeberLine = 1;
+		int initLine = 0;
+		LexState*State = nullptr;
+		LexState*PrevState = nullptr;
+
 		msclr::gcroot<ErrorModule^>m_refErrorMod;
 		ERROR_PHASE m_phase = ERROR_PHASE::LEX_ANALYZER;
 		//ErrorsModule m_refErrorsMod;
-		int m_numeberLine = 1;
 		std::map<std::string, std::string> m_keyWords;
 		std::vector<Token*> m_Tokens;
 		void detecteToken(std::string lexema, int line, int type);
@@ -55,6 +59,8 @@ namespace Compiler {
 		std::vector <char> op_rel = { '<','>','!','=' };
 		char space = ' ';
 		std::vector <std::string> comentarys;
+
+		std::string lex;
 	public:
 		void clearTokens();
 		//bool parseSourceCode(const char* src);
@@ -64,6 +70,7 @@ namespace Compiler {
 		Token* peeckToken(int idx);
 		Token* setIndexToken(int idx);
 		void addToken(std::string lex, int lineNum, TOKEN_TYPE tp);
+		void addComentary(std::string comentary);
 		String^ getTokensList();
 	};
 }

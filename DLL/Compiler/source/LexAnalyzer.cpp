@@ -1,4 +1,5 @@
 #include "../include/LexAnalyzer.h"
+#include "../include/LexStates.h"
 
 
 Compiler::LexAnalyzer::LexAnalyzer(ErrorModule ^ errormod)
@@ -26,6 +27,8 @@ Compiler::LexAnalyzer::LexAnalyzer(ErrorModule ^ errormod)
 	m_keyWords.insert(std::make_pair("false", ""));
 	m_keyWords.insert(std::make_pair("inc", ""));
 	m_keyWords.insert(std::make_pair("dec", ""));
+	State = new LexStateRead;
+	//PrevState = new LexStateRead;
 }
 
 Compiler::LexAnalyzer::~LexAnalyzer()
@@ -34,10 +37,34 @@ Compiler::LexAnalyzer::~LexAnalyzer()
 
 void Compiler::LexAnalyzer::parseSourceCode(const char * src)
 {
+	while (!m_errorsExcedet && src[indexNum] != '\0')
+	{
+		while (src[indexNum] != '\0')
+		{
+			if (m_errorsExcedet||State==nullptr)
+			{
+				break;
+			}
+			State = State->update(src,this);
+		}
+		if (src[indexNum] == '\0')
+		{
+			break;
+		}
+	}
+	indexNum = 0;
 }
 
 void Compiler::LexAnalyzer::clean()
 {
+	clearTokens();
+	comentarys.clear();
+	lex.clear();
+	m_errorsExcedet = false;
+	m_tokensIndex = -1;
+	indexNum = -1;
+	m_numeberLine = 1;
+	State = new LexStateRead;
 }
 
 void Compiler::LexAnalyzer::detecteToken(std::string lexema, int line, int type)
@@ -83,6 +110,12 @@ void Compiler::LexAnalyzer::detecteToken(std::string lexema, int line, int type)
 		break;
 	case Compiler::TOKEN_TYPE::COMENTARY:
 		tType = Compiler::TOKEN_TYPE::COMENTARY;
+		break;
+	case Compiler::TOKEN_TYPE::INCREMENT:
+		tType = Compiler::TOKEN_TYPE::INCREMENT;
+		break;
+	case Compiler::TOKEN_TYPE::DECREMENT:
+		tType = Compiler::TOKEN_TYPE::DECREMENT;
 		break;
 	default:
 		break;
@@ -207,6 +240,11 @@ void Compiler::LexAnalyzer::addToken(std::string lex, int lineNum, TOKEN_TYPE tp
 	m_Tokens.push_back(tok);
 }
 
+void Compiler::LexAnalyzer::addComentary(std::string comentary)
+{
+	comentarys.push_back(comentary);
+}
+
 String ^ Compiler::LexAnalyzer::getTokensList()
 {
 	// TODO: insertar una instrucción return aquí
@@ -250,22 +288,28 @@ String ^ Compiler::LexAnalyzer::getTokensList()
 			str += "DIMENCIONAL_OPERATOR";
 			break;
 		case AGRUPE_OPERATOR:
-			str += "AGRUPE_OPERATOR";
+			str += "GROUPING_OPERATOR";
 			break;
 		case RELATIVE_OPERATOR:
-			str += "RELATIVE_OPERATOR";
+			str += "RELATIONAL_OPERATOR";
 			break;
 		case ASIGNATION:
 			str += "ASIGNATION";
 			break;
 		case DELIMITER:
-			str += "DELIMITER";
+			str += "SEPARATOR";
 			break;
 		case STRING:
 			str += "STRING";
 			break;
 		case COMENTARY:
 			str += "COMENTARY";
+			break;
+		case INCREMENT:
+			str += "INCREMENT";
+			break;
+		case DECREMENT:
+			str += "DECREMENT";
 			break;
 		default:
 			break;

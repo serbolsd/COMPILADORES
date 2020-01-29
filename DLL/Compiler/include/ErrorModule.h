@@ -26,8 +26,8 @@ namespace Compiler {
 		}
 		bool addError(ERROR_PHASE phase, int lineNumber, String^errorDesc, String^errorLine);
 		Void clearErrors();
-	private:
 		int m_numErrors;
+	private:
 		cli::array<String^>^m_errorsArray;
 		
 	};

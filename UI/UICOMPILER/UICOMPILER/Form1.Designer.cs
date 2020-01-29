@@ -60,6 +60,7 @@
             // 
             // sourceCodeBox
             // 
+            this.sourceCodeBox.AcceptsTab = true;
             this.sourceCodeBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.sourceCodeBox.Font = new System.Drawing.Font("Franklin Gothic Demi", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sourceCodeBox.ForeColor = System.Drawing.Color.White;
@@ -141,7 +142,7 @@
             // compilarCompile
             // 
             this.compilarCompile.Name = "compilarCompile";
-            this.compilarCompile.Size = new System.Drawing.Size(123, 22);
+            this.compilarCompile.Size = new System.Drawing.Size(180, 22);
             this.compilarCompile.Text = "Compilar";
             this.compilarCompile.Click += new System.EventHandler(this.compilarCompile_Click);
             // 
@@ -162,7 +163,9 @@
             // 
             // Output
             // 
-            this.Output.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Output.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.Output.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Output.ForeColor = System.Drawing.Color.Black;
             this.Output.Location = new System.Drawing.Point(12, 427);
             this.Output.Multiline = true;
             this.Output.Name = "Output";
@@ -242,22 +245,23 @@
             // 
             // LineTokens
             // 
-            this.LineTokens.FillWeight = 60.9137F;
+            this.LineTokens.FillWeight = 35.12908F;
             this.LineTokens.HeaderText = "Line";
             this.LineTokens.Name = "LineTokens";
             this.LineTokens.ReadOnly = true;
             // 
             // Lexem
             // 
-            this.Lexem.FillWeight = 172.6754F;
+            this.Lexem.FillWeight = 99.58231F;
             this.Lexem.HeaderText = "Lexem";
             this.Lexem.Name = "Lexem";
             this.Lexem.ReadOnly = true;
             // 
             // TypeTokens
             // 
-            this.TypeTokens.FillWeight = 66.41091F;
+            this.TypeTokens.FillWeight = 138.8777F;
             this.TypeTokens.HeaderText = "Type";
+            this.TypeTokens.MinimumWidth = 20;
             this.TypeTokens.Name = "TypeTokens";
             this.TypeTokens.ReadOnly = true;
             // 
@@ -317,10 +321,10 @@
         private System.Windows.Forms.ToolStripMenuItem compilarCompile;
         private System.Windows.Forms.ToolStripMenuItem AyudaMenu;
         private System.Windows.Forms.ToolStripMenuItem verGramáticaAyuda;
+        private System.Windows.Forms.Label FileNameTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn LineTokens;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lexem;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeTokens;
-        private System.Windows.Forms.Label FileNameTitle;
     }
 }
 

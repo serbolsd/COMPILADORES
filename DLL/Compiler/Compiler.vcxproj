@@ -143,9 +143,15 @@
     <ClInclude Include="Compiler.h" />
     <ClInclude Include="include\Analyzer.h" />
     <ClInclude Include="include\ErrorModule.h" />
+    <ClInclude Include="include\GlobalNode.h" />
     <ClInclude Include="include\LexAnalyzer.h" />
+    <ClInclude Include="include\LexStates.h" />
+    <ClInclude Include="include\LocalNode.h" />
     <ClInclude Include="include\Manager.h" />
-    <ClInclude Include="include\StateMachine.h" />
+    <ClInclude Include="include\LexStateMachine.h" />
+    <ClInclude Include="include\SynStateMachine.h" />
+    <ClInclude Include="include\SynStates.h" />
+    <ClInclude Include="include\SyntaxAnalizer.h" />
     <ClInclude Include="include\Token.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -153,9 +159,25 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Compiler.cpp" />
+    <ClCompile Include="include\LexStateMachine.cpp" />
     <ClCompile Include="source\ErrorModule.cpp" />
+    <ClCompile Include="source\GlobalNode.cpp" />
     <ClCompile Include="source\LexAnalyzer.cpp" />
+    <ClCompile Include="source\LexStaDelimitator.cpp" />
+    <ClCompile Include="source\LexStateCommentaryMultiLine.cpp" />
+    <ClCompile Include="source\LexStateDecremento.cpp" />
+    <ClCompile Include="source\LexStateFloat.cpp" />
+    <ClCompile Include="source\LexStateID.cpp" />
+    <ClCompile Include="source\LexStateIncremento.cpp" />
+    <ClCompile Include="source\LexStateNumber.cpp" />
+    <ClCompile Include="source\LexStateOpAritmetico.cpp" />
+    <ClCompile Include="source\LexStateOpLogic.cpp" />
+    <ClCompile Include="source\LexStateOpRelacional.cpp" />
+    <ClCompile Include="source\LexStateRead.cpp" />
+    <ClCompile Include="source\LexStateString.cpp" />
+    <ClCompile Include="source\LocalNode.cpp" />
     <ClCompile Include="source\Manager.cpp" />
+    <ClCompile Include="source\SyntaxAnalizer.cpp" />
     <ClCompile Include="source\Token.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

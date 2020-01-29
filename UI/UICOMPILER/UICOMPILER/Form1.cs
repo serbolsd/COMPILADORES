@@ -20,7 +20,9 @@ namespace UICOMPILER
         Compiler.Manager compilador;
         string actualFile="";
         string sourceData="";
-
+        List<String> Token = new List<String>();
+        List<String> symboltab = new List<String>();
+        String str;
         public Form1()
         {
             InitializeComponent();
@@ -82,8 +84,8 @@ namespace UICOMPILER
             {
                 actualFile = archivo.FileName;
                 string data = File.ReadAllText(archivo.FileName);
-                sourceCodeBox.Text = data;
-                sourceData = data;
+                sourceCodeBox.Text = data.Replace("\r\n", "\n").Replace("\n", Environment.NewLine);
+                sourceData = sourceCodeBox.Text;
                 FileNameTitle.Text = Path.GetFileName(archivo.FileName);
                 //label4.Text = Path.GetFileName(archivo.FileName);
                 //dataGridView1.Rows.Clear();
@@ -164,13 +166,80 @@ namespace UICOMPILER
         {
             sourceCodeBox.Text = "";
             Output.Text = "";
+            TokensTable.Rows.Clear();
+            TablaSymbolos.Rows.Clear();
         }
 
         private void compilarCompile_Click(object sender, EventArgs e)
         {
-            clear();
+            Output.Text = "";
+            TokensTable.Rows.Clear();
+            TablaSymbolos.Rows.Clear();
             String [] compileOutput = compilador.compileProgram(sourceCodeBox.Text);
-            Output.Lines = compileOutput;
+            // Output.Lines = compileOutput;
+            Output.Text = compileOutput[0];
+            if (compileOutput[2] != null)
+            {
+                Output.Text += "\r\n";
+                //textBox2.Text += "\n\r";
+                Output.Text += compileOutput[2];
+            }
+            else
+            {
+                Output.Text += "\r\n";
+                //textBox2.Text += "\n\r";
+                Output.Text += "no se detectaron errores";
+            }
+            String tokens = compileOutput[1];
+            if (tokens != null)
+            {
+                for (int i = 0; i < tokens.Length; i++)
+                {
+
+                    if (tokens[i] != '\n')
+                    {
+                        str += tokens[i];
+                        //i++;
+                    }
+                    if (tokens[i + 1] == '\n')
+                    {
+                        Token.Add(str);
+                        str = "";
+                        i++;
+                    }
+                    if (Token.Count == 3)
+                    {
+                        TokensTable.Rows.Add(Token[0], Token[1], Token[2]);
+
+                        Token.Clear();
+                    }
+                }
+            }
+            String symbolTable = compileOutput[3];
+            if (symbolTable != null)
+            {
+                for (int i = 0; i < symbolTable.Length; i++)
+                {
+
+                    if (symbolTable[i] != '\n')
+                    {
+                        str += symbolTable[i];
+                        //i++;
+                    }
+                    if (symbolTable[i + 1] == '\n')
+                    {
+                        symboltab.Add(str);
+                        str = "";
+                        i++;
+                    }
+                    if (symboltab.Count == 6)
+                    {
+                        TablaSymbolos.Rows.Add(symboltab[0], symboltab[1], symboltab[2], symboltab[3], symboltab[4], symboltab[5]);
+
+                        symboltab.Clear();
+                    }
+                }
+            }
         }
 
         private void verGramáticaAyuda_Click(object sender, EventArgs e)
