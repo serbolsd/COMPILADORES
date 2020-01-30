@@ -82,6 +82,7 @@ namespace UICOMPILER
             OpenFileDialog archivo = new OpenFileDialog();
             if (archivo.ShowDialog() == DialogResult.OK)
             {
+                clear();
                 actualFile = archivo.FileName;
                 string data = File.ReadAllText(archivo.FileName);
                 sourceCodeBox.Text = data.Replace("\r\n", "\n").Replace("\n", Environment.NewLine);
@@ -96,6 +97,7 @@ namespace UICOMPILER
         private void NewFile()
         {
             saveChanges();
+            clear();
             // Do something
             SaveFileDialog newFile = new SaveFileDialog();
             newFile.Filter = "Text File|*.txt|CPP File|*.cpp";
