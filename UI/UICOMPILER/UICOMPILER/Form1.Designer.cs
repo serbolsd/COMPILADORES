@@ -99,35 +99,35 @@
             // fileNuevo
             // 
             this.fileNuevo.Name = "fileNuevo";
-            this.fileNuevo.Size = new System.Drawing.Size(180, 22);
+            this.fileNuevo.Size = new System.Drawing.Size(152, 22);
             this.fileNuevo.Text = "Nuevo";
             this.fileNuevo.Click += new System.EventHandler(this.fileNuevo_Click);
             // 
             // AbrirFile
             // 
             this.AbrirFile.Name = "AbrirFile";
-            this.AbrirFile.Size = new System.Drawing.Size(180, 22);
+            this.AbrirFile.Size = new System.Drawing.Size(152, 22);
             this.AbrirFile.Text = "Abrir";
             this.AbrirFile.Click += new System.EventHandler(this.AbrirFile_Click);
             // 
             // GuardarFile
             // 
             this.GuardarFile.Name = "GuardarFile";
-            this.GuardarFile.Size = new System.Drawing.Size(180, 22);
+            this.GuardarFile.Size = new System.Drawing.Size(152, 22);
             this.GuardarFile.Text = "Guardar";
             this.GuardarFile.Click += new System.EventHandler(this.GuardarFile_Click);
             // 
             // GuardarComoFile
             // 
             this.GuardarComoFile.Name = "GuardarComoFile";
-            this.GuardarComoFile.Size = new System.Drawing.Size(180, 22);
+            this.GuardarComoFile.Size = new System.Drawing.Size(152, 22);
             this.GuardarComoFile.Text = "Guardar Como";
             this.GuardarComoFile.Click += new System.EventHandler(this.GuardarComoFile_Click);
             // 
             // Salir
             // 
             this.Salir.Name = "Salir";
-            this.Salir.Size = new System.Drawing.Size(180, 22);
+            this.Salir.Size = new System.Drawing.Size(152, 22);
             this.Salir.Text = "Salir";
             this.Salir.Click += new System.EventHandler(this.Salir_Click);
             // 
@@ -190,7 +190,7 @@
             this.TablaSymbolos.Location = new System.Drawing.Point(12, 544);
             this.TablaSymbolos.Name = "TablaSymbolos";
             this.TablaSymbolos.ReadOnly = true;
-            this.TablaSymbolos.Size = new System.Drawing.Size(1082, 106);
+            this.TablaSymbolos.Size = new System.Drawing.Size(1082, 155);
             this.TablaSymbolos.TabIndex = 3;
             // 
             // Line
@@ -278,7 +278,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 662);
+            this.ClientSize = new System.Drawing.Size(1106, 711);
             this.Controls.Add(this.FileNameTitle);
             this.Controls.Add(this.TokensTable);
             this.Controls.Add(this.TablaSymbolos);

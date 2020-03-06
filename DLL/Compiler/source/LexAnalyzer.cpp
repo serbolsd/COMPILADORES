@@ -211,9 +211,26 @@ Compiler::Token * Compiler::LexAnalyzer::getNextToken()
 	return m_Tokens[m_tokensIndex];
 }
 
+Compiler::Token * Compiler::LexAnalyzer::getCurrentToken()
+{
+	if (m_tokensIndex >= m_Tokens.size())
+	{
+		return nullptr;
+	}
+	return m_Tokens[m_tokensIndex];
+}
+
 Compiler::Token * Compiler::LexAnalyzer::getPrevToken()
 {
 	m_tokensIndex--;
+	if (m_tokensIndex<0)
+	{
+		m_tokensIndex = 0;
+	}
+	if (m_Tokens.size()==0)
+	{
+		return nullptr;
+	}
 	return m_Tokens[m_tokensIndex];
 }
 

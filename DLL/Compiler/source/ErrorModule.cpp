@@ -29,12 +29,23 @@ bool Compiler::ErrorModule::addError(ERROR_PHASE phase, int lineNumber, String ^
 	{
 		m_errorsArray->SetValue(String::Format("{0}: {1}{2}{3}", phase.ToString(),"Line: " +lineNumber + " ","Error desc: " +errorDesc + " ", "Erro: "+errorLine + " "), m_numErrors);
 		m_numErrors++;
+		canMoreErrors = true;
 		return false;
 	}
+	canMoreErrors = false;
 	return true;
 }
 
 Void Compiler::ErrorModule::clearErrors()
 {
 	return Void();
+}
+
+bool Compiler::ErrorModule::checkCanMoreError()
+{
+	if (m_numErrors < (MAX_ERRORS - 1))
+	{
+		return true;
+	}
+	return false;
 }

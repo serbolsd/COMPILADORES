@@ -66,9 +66,11 @@ namespace Compiler {
 		//bool parseSourceCode(const char* src);
 		void getTokens(std::vector<Token*>*tokensVec);
 		Token* getNextToken();
+		Token* getCurrentToken();
 		Token* getPrevToken();
 		Token* peeckToken(int idx);
 		Token* setIndexToken(int idx);
+		int getIndexToken() {return m_tokensIndex;};
 		void addToken(std::string lex, int lineNum, TOKEN_TYPE tp);
 		void addComentary(std::string comentary);
 		String^ getTokensList();

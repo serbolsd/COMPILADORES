@@ -17,11 +17,13 @@ Class Compiler.ErrorModule: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     System.IDisposable
   Fields:
     Int32 m_numErrors : Public
+    Boolean canMoreErrors : Public
   Methods:
     clean(): PrivateScope, Public, HideBySig
     getErrors(): PrivateScope, Public, HideBySig
     addError(ERROR_PHASE, Int32, String, String): PrivateScope, Public, HideBySig
     clearErrors(): PrivateScope, Public, HideBySig
+    checkCanMoreError(): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Struct Compiler.ERROR_PHASE: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Enum
@@ -38,7 +40,7 @@ Class Compiler.Manager: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.IDisposable
   Fields:
     System.String TokenLex : Public
-    System.String SymbolTable : Public
+    System.String SymbolTableStrings : Public
   Methods:
     compileProgram(String): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

@@ -37,7 +37,5 @@ namespace Compiler {
 		std::string getLex() const { return m_lex; };
 		int getType() const { return m_Type; };
 		int getLineNumber() const { return m_lineNumber; };
-
-
 	};
 }
