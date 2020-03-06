@@ -1,5 +1,3 @@
-﻿  SyntasStateSwitch.cpp
-  SyntaxStateFunctionBlock.cpp
-  Generando código...
+﻿  Manager.cpp
   AssemblyInfo.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   Compiler.vcxproj -> D:\UNIVERSIDAD\6TO\COMPILADORES\GIT\COMPILADORES\UI\UICOMPILER\x64\Exe\Debug\Compilerx64d.dll

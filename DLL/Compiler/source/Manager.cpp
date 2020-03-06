@@ -37,6 +37,19 @@ cli::array<String^>^ Compiler::Manager::getCompilationItems()
 		compilationdetails[2] = gcnew String(outErrors);
 		compilationdetails[3] = gcnew String(SymbolTableStrings);
 	}
+	else if(sin->finishAnalysis)
+	{
+		for (int i = 0; i < m_errors->getErrors()->Length; i++)
+		{
+			// Concatenate in strings the group of line, lexem and type
+			outErrors += m_errors->getErrors()[i] + "\r\n";
+		}
+
+		compilationdetails[0] = gcnew String("---NO SE PUDO COMPLETAR EL ANALYSIS SINTACTICO POR UN ERROR GRAVE---");
+		compilationdetails[1] = gcnew String(TokenLex);
+		compilationdetails[2] = gcnew String(outErrors);
+		compilationdetails[3] = gcnew String(SymbolTableStrings);
+	}
 	else
 	{
 		for (int i = 0; i < m_errors->m_numErrors; i++)

@@ -312,8 +312,16 @@ void Compiler::Syntas_State_Switch::CheckParantesis()
 		t = m_lex->getNextToken();
 		if (t == nullptr)
 		{
-			//agregar error y terminar analisis;
 			m_syn->finishAnalysis = true;
+			t = m_lex->getPrevToken();
+			m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber() + 1, "se esperaba un ')'", " ");
+			t = m_lex->getNextToken();
+			if (!checkCanMoreErrors())
+			{
+				m_syn->finishAnalysis = true;
+				return;
+			}
+			return;
 		}
 	}
 	indexFinalParentesis = m_lex->getIndexToken();
@@ -338,7 +346,15 @@ void Compiler::Syntas_State_Switch::CheckBlock()
 		t = m_lex->getNextToken();
 		if (t == nullptr)
 		{
-			//agregar error y terminar programa
+			m_syn->finishAnalysis = true;
+			t = m_lex->getPrevToken();
+			m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber() + 1, "se esperaba un '}'", " ");
+			t = m_lex->getNextToken();
+			if (!checkCanMoreErrors())
+			{
+				m_syn->finishAnalysis = true;
+				return;
+			}
 			return;
 		}
 	}

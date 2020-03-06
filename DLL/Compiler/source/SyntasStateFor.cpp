@@ -145,7 +145,13 @@ void Compiler::Syntas_State_For::checkEXPLOG()
 	std::string nameid;
 	if (t->getType()!=ID)
 	{
-		//AGREGAR ERROR SE ESPERABA UN ID
+		m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber(), "se esperaba un 'ID' valido", gcnew String(t->getLex().c_str()));
+
+		if (!checkCanMoreErrors())
+		{
+			m_syn->finishAnalysis = true;
+			return;
+		}
 		t = m_lex->getPrevToken();
 	}
 	else
@@ -177,8 +183,14 @@ void Compiler::Syntas_State_For::checkEXPLOG()
 	}
 	if (t->getLex()!="=")
 	{
+		m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber(), "se esperaba un '=' ", gcnew String(t->getLex().c_str()));
+
+		if (!checkCanMoreErrors())
+		{
+			m_syn->finishAnalysis = true;
+			return;
+		}
 		t = m_lex->getPrevToken();
-		//AGREGAR ERROR SE ESPERABA UN =
 	}
 	t = m_lex->getNextToken();
 	if (t == nullptr)
@@ -196,13 +208,25 @@ void Compiler::Syntas_State_For::checkEXPLOG()
 
 	if (t->getType() != FLOAT && t->getType() != INT)
 	{
+		m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber(), "se esperaba un numero", gcnew String(t->getLex().c_str()));
+
+		if (!checkCanMoreErrors())
+		{
+			m_syn->finishAnalysis = true;
+			return;
+		}
 		t = m_lex->getPrevToken();
-		//ERROR SE ESPERABA UN NUMERO
 	}
 	else if (t->getType() == FLOAT&& type==INT)
 	{
+		m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber(), "se esperaba un numero", gcnew String(t->getLex().c_str()));
+
+		if (!checkCanMoreErrors())
+		{
+			m_syn->finishAnalysis = true;
+			return;
+		}
 		t = m_lex->getPrevToken();
-		//ERROR SE ESPERABA UN INT
 	}
 	else
 	{
@@ -223,8 +247,15 @@ void Compiler::Syntas_State_For::checkEXPLOG()
 	}
 	if (t->getLex() != ";")
 	{
-		t = m_lex->getPrevToken();
 		//AGREGAR ERROR SE ESPERABA UN ;
+		m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber(), "se esperaba un ';' ", gcnew String(t->getLex().c_str()));
+
+		if (!checkCanMoreErrors())
+		{
+			m_syn->finishAnalysis = true;
+			return;
+		}
+		t = m_lex->getPrevToken();
 	}
 	//t = m_lex->getNextToken();
 	//if (t == nullptr)
@@ -250,8 +281,15 @@ void Compiler::Syntas_State_For::checkEXPLOG()
 	t = m_lex->getCurrentToken();
 	if (t->getLex() != ";")
 	{
-		t = m_lex->getPrevToken();
 		//AGREGAR ERROR SE ESPERABA UN ;
+		m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber(), "se esperaba un ';' ", gcnew String(t->getLex().c_str()));
+
+		if (!checkCanMoreErrors())
+		{
+			m_syn->finishAnalysis = true;
+			return;
+		}
+		t = m_lex->getPrevToken();
 	}
 
 	t = m_lex->getNextToken();
@@ -300,8 +338,15 @@ void Compiler::Syntas_State_For::checkEXPLOG()
 		}
 		else
 		{
+			m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber(), "se esperaba un '+' ", gcnew String(t->getLex().c_str()));
+
+			if (!checkCanMoreErrors())
+			{
+				m_syn->finishAnalysis = true;
+				return;
+			}
 			t = m_lex->getPrevToken();
-			//error se esperaba ++
+			
 		}
 	}
 	else if (t->getLex()=="inc")
@@ -337,6 +382,13 @@ void Compiler::Syntas_State_For::checkEXPLOG()
 		}
 		else
 		{
+			m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber(), "se esperaba un 'INTEGER'", gcnew String(t->getLex().c_str()));
+
+			if (!checkCanMoreErrors())
+			{
+				m_syn->finishAnalysis = true;
+				return;
+			}
 			t = m_lex->getPrevToken();
 			//error se esperaba ++
 		}

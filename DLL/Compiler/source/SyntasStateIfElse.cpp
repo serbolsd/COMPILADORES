@@ -184,8 +184,16 @@ void Compiler::Syntas_State_IF_Else::CheckParantesis()
 		t = m_lex->getNextToken();
 		if (t == nullptr)
 		{
-			//agregar error y terminar analisis;
 			m_syn->finishAnalysis = true;
+			t = m_lex->getPrevToken();
+			m_syn->m_err->addError(ERROR_PHASE::SYN_ANALYZER, t->getLineNumber() + 1, "se esperaba un ')' ", " ");
+			t = m_lex->getNextToken();
+			if (!checkCanMoreErrors())
+			{
+				m_syn->finishAnalysis = true;
+				return;
+			}
+			return;
 		}
 	}
 	t = m_lex->setIndexToken(indexParentesis);
